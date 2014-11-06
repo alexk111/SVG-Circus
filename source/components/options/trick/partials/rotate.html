@@ -1,0 +1,21 @@
+<div class="scOptions_group">
+  <div>Direction</div>
+  <select id="scOptionTrick_direction" ng-model="model.rotate.direction">
+    <option value="1">Clockwise</option>
+    <option value="-1">Counterclockwise</option>
+  </select>
+</div>
+
+<div class="scOptions_group">
+  <div>Loops</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="1" ceiling="20" step="1" precision="0" ng-model="model.rotate.loops"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionTrick_loops" type="text" ng-model="model.rotate.loops" sanitize-input="integer" />
+    </div>
+  </div>
+</div>
+
+<div ng-include="'options/trick/partials/common/easing.html'"></div>

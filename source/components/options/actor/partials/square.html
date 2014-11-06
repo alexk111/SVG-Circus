@@ -1,0 +1,15 @@
+<div class="scOptions_group">
+  <div>Square Size</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="1" ceiling="100" step="1" precision="0" ng-model="model.dx"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_size" type="text" ng-model="model.dx" sanitize-input="integer" />
+    </div>
+  </div>
+</div>
+<div ng-include="'options/actor/partials/common/position.html'"></div>
+<div ng-include="'options/actor/partials/common/style_actor.html'"></div>
+<div ng-include="'options/actor/partials/common/style_fill.html'"></div>
+<div ng-include="'options/actor/partials/common/style_stroke.html'"></div>

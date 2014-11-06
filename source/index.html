@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="svgCircus">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SVG animation tool | SVG Circus</title>
+  <meta name="description" content="SVG Circus enables you to create cool animated SVG spinners, loaders and other looped animations in seconds">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="SVG animation tool | SVG Circus" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SVG Circus" />
+  <meta property="og:image" content="http://svgcircus.com/imgs/icons/og_image.png" />
+  <meta property="og:url" content="http://svgcircus.com/" />
+  <meta property="og:description" content="Online app enabling you to create cool SVG animations in seconds" />
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="./imgs/icons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./imgs/icons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./imgs/icons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./imgs/icons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./imgs/icons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./imgs/icons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./imgs/icons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./imgs/icons/apple-touch-icon-152x152.png">
+
+  <link rel="icon" type="image/png" href="./imgs/icons/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="./imgs/icons/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="./imgs/icons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="./imgs/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./imgs/icons/favicon-16x16.png" sizes="16x16">
+
+  <meta name="msapplication-TileColor" content="#DFDFD0">
+  <meta name="msapplication-TileImage" content="./imgs/icons/mstile-144x144.png">
+
+  <!-- @if TARGET_ENV='dev' -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <!-- @endif -->
+  <!-- @if TARGET_ENV='prod' -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- @endif -->
+  <link rel="stylesheet" href="./css/svg-circus.css"/>
+</head>
+<body>
+  <div id="svgCircus" ng-controller="svgCircusCtrl">
+    <div id="svgCircus_loader" ng-show="!appLoaded">
+      <div>Loading. Please wait...</div>
+      <div>
+        <svg id="SVG-Circus-dd31d623-9447-76c4-61d3-264c466115fa" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><circle id="actor_1" x="50" y="75" r="5" opacity="1" fill="rgba(242,162,12,1)" fill-opacity="1" stroke="rgba(166,3,17,1)" stroke-width="1" stroke-opacity="1" stroke-dasharray=""></circle><circle id="actor_2" x="50" y="75" r="5" opacity="1" fill="rgba(242,162,12,1)" fill-opacity="1" stroke="rgba(166,3,17,1)" stroke-width="1" stroke-opacity="1" stroke-dasharray=""></circle><circle id="actor_3" x="50" y="75" r="5" opacity="1" fill="rgba(242,162,12,1)" fill-opacity="1" stroke="rgba(166,3,17,1)" stroke-width="1" stroke-opacity="1" stroke-dasharray=""></circle><script type="text/ecmascript"><![CDATA[(function(){var actors={};actors.actor_1={node:document.getElementById("SVG-Circus-dd31d623-9447-76c4-61d3-264c466115fa").getElementById("actor_1"),type:"circle",cx:50,cy:75,dx:10,dy:12,opacity:1};actors.actor_2={node:document.getElementById("SVG-Circus-dd31d623-9447-76c4-61d3-264c466115fa").getElementById("actor_2"),type:"circle",cx:50,cy:75,dx:10,dy:12,opacity:1};actors.actor_3={node:document.getElementById("SVG-Circus-dd31d623-9447-76c4-61d3-264c466115fa").getElementById("actor_3"),type:"circle",cx:50,cy:75,dx:10,dy:12,opacity:1};var tricks={};tricks.trick_1=(function(t,e){e=(function(n){return.5>n?2*n*n:-1+(4-2*n)*n})(e)%1,e=e*4%1,e=0>e?1+e:e;var _=t.node,c=t.cx-25*Math.cos(-90*Math.PI/180),a=t.cy+25*Math.sin(-90*Math.PI/180);switch(c+=25*Math.cos((-90-360*e*1)*Math.PI/180),a-=25*Math.sin((-90-360*e*1)*Math.PI/180),t.type){case"circle":_.setAttribute("cx",c),_.setAttribute("cy",a);break;case"square":_.setAttribute("x",c-t.dx/2),_.setAttribute("y",a-t.dx/2)}});tricks.trick_2=(function(t,i){i=(function(n){return.5>n?2*n*n:-1+(4-2*n)*n})(i)%1,i=0>i?1+i:i;var _=t.node;0.1>=i?_.setAttribute("opacity",i*(t.opacity/0.1)):i>=0.9?_.setAttribute("opacity",t.opacity-(i-0.9)*(t.opacity/(1-0.9))):_.setAttribute("opacity",t.opacity)});var scenarios={};scenarios.scenario_1={actors: [actors.actor_1,actors.actor_2,actors.actor_3],tricks: [{trick: tricks.trick_1,start:0,end:1},{trick: tricks.trick_2,start:0,end:1}],startAfter:0,duration:6000,actorDelay:300,repeat:0,repeatDelay:1000};var _reqAnimFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.oRequestAnimationFrame,fnTick=function(r){for(var a in scenarios)for(var e=scenarios[a],t=r-e.startAfter,i=0,n=e.actors.length;n>i;i++){var o=0;if(t>=0){var m=e.duration+e.repeatDelay;e.repeat>0&&t>m*e.repeat&&(o=1),o+=t%m/e.duration}if(e.actors[i].node)for(var s=0,c=e.tricks.length;c>s;s++){var f=e.tricks[s],w=(o-f.start)*(1/(f.end-f.start));f.trick(e.actors[i],Math.max(0,Math.min(1,w)))}t-=e.actorDelay}_reqAnimFrame(fnTick)};_reqAnimFrame(fnTick);})()]]></script></svg>
+      </div>
+    </div>
+    <div id="svgCircus_areaNavOptions" ng-cloak>
+      <sc-nav id="svgCircus_areaNav"></sc-nav>
+      <sc-options id="svgCircus_areaOptions"></sc-options>
+    </div>
+    <div id="svgCircus_areaArenaSVG" ng-cloak>
+      <div id="svgCircus_areaArenaMenu">
+        <sc-preset-manager id="svgCircus_areaPresetManager"></sc-preset-manager>
+        <button ng-click="exportSVG()">Export SVG</button>
+      </div>
+      <sc-arena id="svgCircus_areaArena"></sc-arena>
+      <div id="svgCircus_areaArenaSubMenu">
+      </div>
+    </div>
+    <div id="svgCircus_smallScreen">
+      <div class="svgCircus_smallScreen_pic"></div>
+      <div class="svgCircus_smallScreen_text">
+        <div class="svgCircus_smallScreen_text1">
+          Your screen size is not supported :(
+        </div>
+        <div class="svgCircus_smallScreen_text2">
+          Please open the app on your <span>laptop</span> or <span>desktop</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="svgCircus_credits">
+    <div id="svgCircus_logo"></div>
+    <div id="svgCircus_descr">
+      SVG Circus enables you to create cool animated SVG spinners, loaders and other looped animations in seconds.
+    </div>
+    <div id="svgCircus_share">
+      <a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Ftwitter.com%2Fabout%2Fresources%2Fbuttons&source=tweetbutton&text=SVG Circus%20-%20Create%20Cool%20SVG%20Animations%20in%20seconds&url=http%3A%2F%2Fsvgcircus.com&via=svgcircus" target="_blank" class="twitter">
+        <svg viewBox="0 0 20 16">
+          <path d="M 20 1.7757 C 15.6217 6.235 14.2216 21.5177 1 13.3036 C 3.0457 13.5498 5.112 12.9716 6.7616 11.7445 C 4.9328 11.5898 1.0208 9.9153 4.8684 9.0448 C 3.6372 9.1752 1.5736 6.7464 1.7573 5.2767 L 3.5021 5.7531 L 3.517 5.7458 C 1.5958 4.4437 1.5982 2.5949 2.3142 0.6929 C 3.8027 2.4596 5.7245 3.5784 7.9125 4.2589 C 8.6712 4.4949 9.4827 4.5506 10.2662 4.6487 L 10.3553 4.6487 C 10.3317 2.631 11.11 0.4896 13.3547 0.0722 C 15.3672 -0.302 18.1067 1.4049 20 1.7757 Z" />
+        </svg>
+        Share on twitter
+      </a>
+    </div>
+    <div id="svgCircus_follow">
+      <a href="https://twitter.com/intent/user?screen_name=svgcircus" target="_blank" class="twitter">
+        <svg viewBox="0 0 20 16">
+          <path d="M 20 1.7757 C 15.6217 6.235 14.2216 21.5177 1 13.3036 C 3.0457 13.5498 5.112 12.9716 6.7616 11.7445 C 4.9328 11.5898 1.0208 9.9153 4.8684 9.0448 C 3.6372 9.1752 1.5736 6.7464 1.7573 5.2767 L 3.5021 5.7531 L 3.517 5.7458 C 1.5958 4.4437 1.5982 2.5949 2.3142 0.6929 C 3.8027 2.4596 5.7245 3.5784 7.9125 4.2589 C 8.6712 4.4949 9.4827 4.5506 10.2662 4.6487 L 10.3553 4.6487 C 10.3317 2.631 11.11 0.4896 13.3547 0.0722 C 15.3672 -0.302 18.1067 1.4049 20 1.7757 Z" />
+        </svg>
+        Follow @svgcircus
+      </a><br/>for updates
+    </div>
+    <div id="svgCircus_madeby">
+      Made by <a href="https://twitter.com/alex_kaul" target="_blank">@alex_kaul</a>
+    </div>
+  </div>
+
+
+  <!-- @if TARGET_ENV='dev' -->
+  <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <!-- @endif -->
+  <!-- @if TARGET_ENV='prod' -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.js"></script>
+  <!-- @endif -->
+
+  <script type="text/javascript" src="./js/svg-circus.js"></script>
+
+  <!-- @if TARGET_ENV='prod' -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-377715-15', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <!-- @endif -->
+</body>
+</html>

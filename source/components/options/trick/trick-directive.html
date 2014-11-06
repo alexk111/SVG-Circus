@@ -1,0 +1,16 @@
+<div class="scOptions_group">
+  <div>Trick Type</div>
+  <select id="scOptionTrick_type" ng-model="model.type">
+    <option value="run">Run</option>
+    <option value="fade">Fade</option>
+    <option value="scale">Scale</option>
+    <option value="rotate">Rotate</option>
+    <option value="skew">Skew</option>
+  </select>
+</div>
+<div ng-if="model.type=='run'" ng-include="'options/trick/partials/run.html'"></div>
+<div ng-if="model.type=='fade'" ng-include="'options/trick/partials/fade.html'"></div>
+
+<div ng-if="model.type=='scale'" ng-include="'options/trick/partials/scale.html'"></div>
+<div ng-if="model.type=='rotate'" ng-include="'options/trick/partials/rotate.html'"></div>
+<div ng-if="model.type=='skew'" ng-include="'options/trick/partials/skew.html'"></div>

@@ -1,0 +1,14 @@
+<div class="scOptions_group">
+  <div>Actor Type</div>
+  <select id="scOptionActor_type" ng-model="model.type">
+    <option value="circle">Circle</option>
+    <option value="square">Square</option>
+    <option value="polygon">Polygon</option>
+  </select>
+</div>
+<div ng-if="model.type=='rect'" ng-include="'options/actor/partials/rect.html'"></div>
+<div ng-if="model.type=='square'" ng-include="'options/actor/partials/square.html'"></div>
+<div ng-if="model.type=='circle'" ng-include="'options/actor/partials/circle.html'"></div>
+<div ng-if="model.type=='ellipse'" ng-include="'options/actor/partials/ellipse.html'"></div>
+<div ng-if="model.type=='polygon'" ng-include="'options/actor/partials/polygon.html'"></div>
+<div ng-if="model.type=='custom'" ng-include="'options/actor/partials/custom.html'"></div>

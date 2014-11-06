@@ -1,0 +1,20 @@
+#scPresetManager {
+  display:block;
+  width:100%;
+  height:100%;
+
+  @include box-sizing(border-box);
+  line-height:100%;
+  font-size:14px;
+  padding:0 5px;
+  background:$c-grey4;
+  border:1px solid $c-grey3;
+  outline:none;
+  color:$c-darkgrey;
+  option {
+    &:hover {
+      background:$c-red;
+      color:$c-white;
+    }
+  }
+}

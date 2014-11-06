@@ -1,0 +1,38 @@
+<div class="scOptions_group">
+  <div>Stroke</div>
+  <label for="scOptionActor_stroke">Stroke:</label>
+  <div class="inputColor">
+    <input id="scOptionActor_stroke" type="text" ng-model="model.stroke" style="background-color: {{model.stroke}};" ng-class="{'isDark': !helpersSrvc.isRGBLight(model.stroke)}" colorpicker="rgba" />
+  </div>
+
+  <label for="scOptionActor_strokeWidth">Stroke Width:</label>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="50" step="1" precision="0" ng-model="model.strokeWidth"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_strokeWidth" type="text" ng-model="model.strokeWidth" sanitize-input="integer" />
+    </div>
+  </div>
+
+  <label for="scOptionActor_strokeDashSize">Stroke Dash Size:</label>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="100" step="1" precision="0" ng-model="model.strokeDashSize"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_strokeDashSize" type="text" ng-model="model.strokeDashSize" sanitize-input="integer" />
+    </div>
+  </div>
+
+  <label for="scOptionActor_strokeDashGaps">Stroke Dash Gaps:</label>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="100" step="1" precision="0" ng-model="model.strokeDashGaps"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_strokeDashGaps" type="text" ng-model="model.strokeDashGaps" sanitize-input="integer" />
+    </div>
+  </div>
+
+</div>

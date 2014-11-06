@@ -1,0 +1,109 @@
+<div id="sc_arena">
+  <div id="preview" ng-style="{'background-color': svgCircusSrvc.getArena().previewBG}">
+    <svg id="previewSVG" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" svg-viewbox="-1 -1 {{svgCircusSrvc.getArena().width*1+2}} {{svgCircusSrvc.getArena().height*1+2}}" preserveAspectRatio="xMidYMid meet" ng-class="{'isSizeSet': svgCircusSrvc.getArena().previewSize!=='Auto'}" ng-style="genPreviewStyle()">
+      <g class="scArena_helperGrid" ng-class="{'isLight': helpersSrvc.isRGBLight(svgCircusSrvc.getArena().previewBG)}">
+        <line x1="25" y1="0" x2="25" y2="100" class="secondary" ng-show="helpers.grid1"></line>
+        <line x1="75" y1="0" x2="75" y2="100" class="secondary" ng-show="helpers.grid1"></line>
+        <line x1="0" y1="25" x2="100" y2="25" class="secondary" ng-show="helpers.grid1"></line>
+        <line x1="0" y1="75" x2="100" y2="75" class="secondary" ng-show="helpers.grid1"></line>
+
+        <circle cx="25" cy="50" r="25" class="secondary" ng-show="helpers.grid2"></circle>
+        <circle cx="50" cy="25" r="25" class="secondary" ng-show="helpers.grid2"></circle>
+        <circle cx="50" cy="75" r="25" class="secondary" ng-show="helpers.grid2"></circle>
+        <circle cx="75" cy="50" r="25" class="secondary" ng-show="helpers.grid2"></circle>
+
+        <circle cx="25" cy="25" r="25" class="secondary" ng-show="helpers.grid3"></circle>
+        <circle cx="25" cy="75" r="25" class="secondary" ng-show="helpers.grid3"></circle>
+        <circle cx="75" cy="25" r="25" class="secondary" ng-show="helpers.grid3"></circle>
+        <circle cx="75" cy="75" r="25" class="secondary" ng-show="helpers.grid3"></circle>
+
+        <circle cx="50" cy="50" r="25" class="secondary" ng-show="helpers.grid4"></circle>
+        <circle cx="50" cy="50" r="50" class="secondary2" ng-show="helpers.grid4"></circle>
+
+        <line x1="50" y1="0" x2="50" y2="100" ng-show="helpers.grid1 || helpers.grid2 || helpers.grid3 || helpers.grid4"></line>
+        <line x1="0" y1="50" x2="100" y2="50" ng-show="helpers.grid1 || helpers.grid2 || helpers.grid3 || helpers.grid4"></line>
+        <rect x="0" y="0" width="100" height="100" ng-show="svgCircusSrvc.getArena().previewSize!=='Auto' || helpers.grid1 || helpers.grid2 || helpers.grid3 || helpers.grid4"></rect>
+      </g>
+
+      <g ng-repeat="actor in svgCircusSrvc.getActors()|reverse" class="scArena_item">
+        <rect ng-if="actor.type=='rect'" ng-attr-id="{{actor.id}}"
+              ng-attr-x="{{actor.cx-actor.dx/2}}" ng-attr-y="{{actor.cy-actor.dy/2}}"
+              ng-attr-width="{{actor.dx}}" ng-attr-height="{{actor.dy}}"
+              ng-attr-opacity="{{actor.opacity}}"
+              ng-attr-fill="{{actor.fill}}" ng-attr-fill-opacity="{{actor.fillOpacity}}"
+              ng-attr-stroke="{{actor.stroke}}" ng-attr-stroke-width="{{actor.strokeWidth}}" ng-attr-stroke-opacity="{{actor.strokeOpacity}}" ng-attr-stroke-dasharray="{{buildAttrStrokeDashArray(actor)}}"
+        ></rect>
+
+        <rect ng-if="actor.type=='square'" ng-attr-id="{{actor.id}}"
+              ng-attr-x="{{actor.cx-actor.dx/2}}" ng-attr-y="{{actor.cy-actor.dx/2}}"
+              ng-attr-width="{{actor.dx}}" ng-attr-height="{{actor.dx}}"
+              ng-attr-opacity="{{actor.opacity}}"
+              ng-attr-fill="{{actor.fill}}" ng-attr-fill-opacity="{{actor.fillOpacity}}"
+              ng-attr-stroke="{{actor.stroke}}" ng-attr-stroke-width="{{actor.strokeWidth}}" ng-attr-stroke-opacity="{{actor.strokeOpacity}}" ng-attr-stroke-dasharray="{{buildAttrStrokeDashArray(actor)}}"
+        ></rect>
+
+        <ellipse ng-if="actor.type=='ellipse'" ng-attr-id="{{actor.id}}"
+              ng-attr-cx="{{actor.cx}}" ng-attr-cy="{{actor.cy}}"
+              ng-attr-rx="{{actor.dx/2}}" ng-attr-ry="{{actor.dy/2}}"
+              ng-attr-opacity="{{actor.opacity}}"
+              ng-attr-fill="{{actor.fill}}" ng-attr-fill-opacity="{{actor.fillOpacity}}"
+              ng-attr-stroke="{{actor.stroke}}" ng-attr-stroke-width="{{actor.strokeWidth}}" ng-attr-stroke-opacity="{{actor.strokeOpacity}}" ng-attr-stroke-dasharray="{{buildAttrStrokeDashArray(actor)}}"
+        ></ellipse>
+
+        <circle ng-if="actor.type=='circle'" ng-attr-id="{{actor.id}}"
+              ng-attr-cx="{{actor.cx}}" ng-attr-cy="{{actor.cy}}"
+              ng-attr-r="{{actor.dx/2}}"
+              ng-attr-opacity="{{actor.opacity}}"
+              ng-attr-fill="{{actor.fill}}" ng-attr-fill-opacity="{{actor.fillOpacity}}"
+              ng-attr-stroke="{{actor.stroke}}" ng-attr-stroke-width="{{actor.strokeWidth}}" ng-attr-stroke-opacity="{{actor.strokeOpacity}}" ng-attr-stroke-dasharray="{{buildAttrStrokeDashArray(actor)}}"
+        ></circle>
+
+        <polygon ng-if="actor.type=='polygon'" ng-attr-id="{{actor.id}}"
+              ng-attr-points="{{svgBuilderSrvc.generatePolygonPoints(actor.cx,actor.cy,actor.dx/2,actor.sides,actor.angle)}}"
+              ng-attr-opacity="{{actor.opacity}}"
+              ng-attr-fill="{{actor.fill}}" ng-attr-fill-opacity="{{actor.fillOpacity}}"
+              ng-attr-stroke="{{actor.stroke}}" ng-attr-stroke-width="{{actor.strokeWidth}}" ng-attr-stroke-opacity="{{actor.strokeOpacity}}" ng-attr-stroke-dasharray="{{buildAttrStrokeDashArray(actor)}}"
+        ></polygon>
+      </g>
+    </svg>
+
+    <js-executor scripts="svgScriptsInit"></js-executor>
+    <js-executor scripts="svgScriptsActors"></js-executor>
+    <js-executor scripts="svgScriptsTricks"></js-executor>
+    <js-executor scripts="svgScriptsScenarios"></js-executor>
+    <js-executor scripts="svgScriptsCircus"></js-executor>
+    <js-executor scripts="svgScriptsActorsNodeRefresher"></js-executor>
+    <js-executor scripts="svgScriptsActorsNodeValuesResetter"></js-executor>
+    <js-executor scripts="svgScriptsActorsNodeValuesResetterCall"></js-executor>
+
+
+  </div>
+  <div id="scArena_optionsPreview" class="scArena_options">
+    <div class="heading">Preview Size / Background</div>
+    <div class="sizeButtons">
+      <div ng-repeat="sizeOption in sizeOptions" ng-class="{'enabled': svgCircusSrvc.getArena().previewSize==sizeOption}" ng-click="svgCircusSrvc.getArena().previewSize=sizeOption" ng-style="{'width': sizeOptionWidth}">{{ sizeOption=='Auto' && 'Auto' || sizeOption+'x'+sizeOption }}</div>
+    </div>
+    <div class="backgroundButtons">
+      <div ng-repeat="bgOption in bgOptions" ng-class="{'enabled': svgCircusSrvc.getArena().previewBG==bgOption}" ng-click="svgCircusSrvc.getArena().previewBG=bgOption" ng-style="{'width': bgOptionWidth, 'background': bgOption}"><span ng-class="{'isLight': helpersSrvc.isRGBLight(bgOption)}"></span></div>
+    </div>
+  </div>
+  <div id="scArena_optionsGrid" class="scArena_options">
+    <div class="heading">Helper Grid</div>
+    <div class="helperButtons helperButtons2">
+      <div class="helperButtonArea">
+        <button ng-class="{'enabled': helpers.grid1}" ng-click="helpers.grid1=!helpers.grid1">Squares</button>
+      </div>
+      <div class="helperButtonArea">
+        <button ng-class="{'enabled': helpers.grid4}" ng-click="helpers.grid4=!helpers.grid4">Circles</button>
+      </div>
+    </div>
+    <div class="helperButtons helperButtons2">
+      <div class="helperButtonArea">
+        <button ng-class="{'enabled': helpers.grid2}" ng-click="helpers.grid2=!helpers.grid2">Secondary Circles</button>
+      </div>
+      <div class="helperButtonArea">
+        <button ng-class="{'enabled': helpers.grid3}" ng-click="helpers.grid3=!helpers.grid3">Secondary Circles 2</button>
+      </div>
+    </div>
+  </div>
+</div>

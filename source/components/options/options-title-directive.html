@@ -1,0 +1,2 @@
+<button ng-click="doEditTitle($event)" ng-hide="isEditTitle"><span>Edit Name</span>{{model}}</button>
+<input type="text" ng-show="isEditTitle" ng-blur="endEditTitle()" ng-model="model" />

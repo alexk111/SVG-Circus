@@ -1,0 +1,20 @@
+{
+  "name": "SVG Circus",
+  "version": "0.3.6",
+  "authors": [
+    "Alex Kaul <alexkaul@googlemail.com>"
+  ],
+  "description": "Create cool animated SVG spinners, loaders and other looped animations in seconds",
+  "main": [],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.19",
+    "angular-animate": "~1.2.21",
+    "bootstrap": "~3.2.0",
+    "angular-bootstrap": "~0.11.0"
+  }
+}

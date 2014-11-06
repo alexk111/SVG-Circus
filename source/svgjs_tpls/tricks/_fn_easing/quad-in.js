@@ -1,0 +1,1 @@
+x=function (t) { return t*t };

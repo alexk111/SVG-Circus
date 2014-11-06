@@ -1,0 +1,247 @@
+#sc_arena {
+  display:block;
+  width:100%;
+  height:100%;
+  position:relative;
+  overflow:hidden;
+  #preview, svg {
+    display:block;
+    width:100%;
+    height:100%;
+  }
+  svg {
+    @include transition(all 0.2s ease-in-out);
+    &.isSizeSet {
+      position:absolute;
+      top:50%;
+      left:50%;
+    }
+  }
+  #preview {
+    @include box-sizing(border-box);
+    padding:20px;
+    @include transition(background 0.2s ease-in-out);
+  }
+  .scArena_options {
+    position:absolute;
+    left:0; right:0;
+    background: $c-grey4;
+  }
+  #scArena_optionsPreview {
+    @include transform(translateY(-100%));
+    top:0; height:140px;
+    @include transition(all 0.2s ease-in-out 0s);
+  }
+  #scArena_optionsGrid {
+    @include transform(translateY(100%));
+    bottom:0; height:140px;
+    @include transition(all 0.2s ease-in-out 0.08s);
+  }
+  &:hover {
+    #scArena_optionsPreview {
+      @include transition(all 0.2s ease-in-out 0.5s);
+    }
+    #scArena_optionsGrid {
+      @include transition(all 0.2s ease-in-out 0.58s);
+    }
+    #scArena_optionsPreview, #scArena_optionsGrid {
+      @include transform(translateY(0));
+    }
+  }
+}
+
+.scArena_options {
+  > .heading {
+    font-size:14px;
+    font-weight:700;
+    line-height:26px;
+    color:$c-darkred;
+    margin-top:15px;
+    margin-bottom:10px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .inputColor {
+    width:100%;
+    overflow:hidden;
+  }
+  .helperButtons, .backgroundButtons, .sizeButtons {
+    width:100%;
+    margin-bottom:10px;
+    overflow:hidden;
+  }
+  .helperButtons {
+    > .helperButtonArea {
+      float:left;
+      display:block;
+      @include box-sizing(border-box);
+
+      > button {
+        @extend %resetButton;
+        display:block;
+        width:100%;
+        padding:5px 10px;
+        background:$c-grey2;
+        border:1px solid $c-grey2;
+        color:$c-grey5;
+        @include transition(all 0.15s ease-in-out);
+        &:hover {
+          background:$c-grey3;
+          border:1px solid $c-grey3;
+          color:$c-grey5;
+        }
+        &.enabled {
+          color:$c-grey4;
+          background:$c-grey5;
+          border:1px solid $c-grey5;
+        }
+      }
+    }
+    &.helperButtons2 {
+      > .helperButtonArea {
+        width:50%;
+        &:first-child {
+          padding-right:5px;
+        }
+        &:last-child {
+          padding-left:5px;
+        }
+      }
+    }
+  }
+  .backgroundButtons,.sizeButtons {
+    > div {
+      float:left;
+      display:block;
+      @include box-sizing(border-box);
+      @extend %resetButton;
+      display:block;
+      width:100%;
+      height:32px;
+      @include transition(all 0.15s ease-in-out);
+      > span {
+        display:block;
+        background:$c-white;
+        width:16px; height:16px;
+        margin:8px auto;
+        @include opacity(0);
+        @include transition(all 0.15s ease-in-out);
+        &.isLight {
+          background:$c-darkgrey;
+        }
+      }
+      &:hover {
+        > span {
+          @include opacity(0.75);
+        }
+      }
+      &.enabled {
+        > span {
+          @include opacity(1);
+        }
+      }
+    }
+  }
+  .sizeButtons {
+    > div {
+      line-height:32px;
+      background:$c-grey2;
+      text-align:center;
+      color:$c-grey5;
+      &:hover {
+        background:$c-grey3;
+        color:$c-grey5;
+      }
+      &.enabled {
+        background:$c-grey5;
+        color:$c-grey4;
+      }
+    }
+  }
+  input[type=text] {
+    display:block;
+    @include box-sizing(border-box);
+    width:100%;
+    height:40px;
+    line-height:32px;
+    font-size:14px;
+    padding:3px 5px;
+    background:$c-grey1;
+    border:1px solid $c-grey2;
+    outline:none;
+    color:$c-darkgrey;
+  }
+}
+
+
+.scArena_item {
+  @include opacity(1);
+  &.accentOut-add, &.accentOut-remove {
+    @include transition(opacity ease-in-out 0.3s);
+  }
+  &.accentOut {
+    @include opacity(0.35);
+  }
+}
+.scArena_item {
+  @include transform-origin(50%,50%);
+  &.ng-enter {
+    @include transition(none linear 1s);
+  }
+  &.ng-leave {
+    @include transition(none linear 0.2s);
+  }
+  &.ng-enter.ng-enter-active {
+    @include animation(animation-arena-additem 1s linear both);
+  }
+  &.ng-leave.ng-leave-active {
+    @include animation(animation-arena-removeitem 0.2s linear both);
+  }
+}
+
+.scArena_helperGrid {
+  stroke:$c-white;
+  @include opacity(0.15);
+  rect {
+    fill: none;
+    //stroke: $c-grey3;
+    stroke-width:0.5;
+  }
+  circle {
+    fill:none;
+    //stroke: $c-grey4;
+    stroke-width:0.5;
+    &.secondary {
+      stroke-dasharray: 1,1;
+    }
+    &.secondary2 {
+      stroke-dasharray: 1,1;
+    }
+  }
+  line {
+    //stroke: $c-grey4;
+    stroke-width:0.5;
+    &.secondary {
+      stroke-dasharray: 1,1;
+    }
+  }
+  &.isLight {
+    stroke:$c-darkgrey;
+  }
+
+  & > * {
+    @include opacity(1);
+    @include transition(all 0.2s ease-in-out);
+    &.ng-hide-add,
+    &.ng-hide-remove {
+      display:inline!important;
+      visibility:visible!important;
+    }
+
+    &.ng-hide {
+      @include opacity(0);
+    }
+
+  }
+}
+

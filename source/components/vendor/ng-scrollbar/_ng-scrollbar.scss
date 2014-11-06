@@ -1,0 +1,63 @@
+.ngsb-wrap {
+  -ms-touch-action: none;
+  .ngsb-container {
+    width: auto;
+    overflow: hidden;
+    //@include transition(all 0.5s);
+  }
+  .ngsb-scrollbar {
+    width: 8px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    @include opacity(0);
+    @include transition(all 0.5s);
+    .ngsb-thumb-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: auto;
+    }
+    a.ngsb-thumb-container {
+      margin: 20px 0;
+    }
+    .ngsb-track {
+      height: 100%;
+      margin: 0 auto;
+      width: 8px;
+      background: #000;
+      //@include border-radius(2px);
+      visibility:hidden;
+      @include box-shadow(1px 1px 1px rgba(255, 255, 255, 0.1));
+    }
+    .ngsb-thumb-pos {
+      cursor: pointer;
+      width: 100%;
+      height: 30px;
+      .ngsb-thumb {
+        @include transition(all 0.5s);
+        width: 8px;
+        height: 100%;
+        margin: 0 auto;
+        //@include border-radius(10px);
+        text-align: center;
+        background: $c-grey5;
+        //@include opacity(0.4);
+      }
+      &:hover .ngsb-thumb {
+        //@include opacity(0.5);
+      }
+      &:active {
+        //@include opacity(0.6);
+      }
+    }
+  }
+
+  &:hover {
+    .ngsb-scrollbar {
+      @include opacity(1);
+    }
+  }
+}

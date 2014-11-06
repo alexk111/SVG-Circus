@@ -1,0 +1,32 @@
+<div class="scOptions_group">
+  <div>Position</div>
+  <label for="scOptionActor_xPos">X position:</label>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="100" step="1" precision="0" ng-model="model.cx"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_xPos" type="text" ng-model="model.cx" sanitize-input="integer" />
+    </div>
+  </div>
+  <div class="helperButtons helperButtons3">
+    <button ng-click="model.cx=100*0.25">25%</button>
+    <button ng-click="model.cx=100*0.5">50%</button>
+    <button ng-click="model.cx=100*0.75">75%</button>
+  </div>
+
+  <label for="scOptionActor_yPos">Y position:</label>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="100" step="1" precision="0" ng-model="model.cy"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionActor_yPos" type="text" ng-model="model.cy" sanitize-input="integer" />
+    </div>
+  </div>
+  <div class="helperButtons helperButtons3">
+    <button ng-click="model.cy=100*0.25">25%</button>
+    <button ng-click="model.cy=100*0.5">50%</button>
+    <button ng-click="model.cy=100*0.75">75%</button>
+  </div>
+</div>

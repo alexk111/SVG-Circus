@@ -1,0 +1,23 @@
+<div id="scOptions">
+  <div class="scOptions_area" ng-if="navService.getNavSelectedId()=='actors' && svgCircusSrvc.getSelectedActor()!=null">
+    <div class="scOptions_head"></div>
+    <sc-options-title class="scOptions_title" model="svgCircusSrvc.getSelectedActor().name"></sc-options-title>
+    <div class="scOptions_viewport" ng-scrollbar rebuild-on-change="svgCircusSrvc.getSelectedActor()" rebuild-on-resize>
+      <sc-options-actor class="scOptions_content" model="svgCircusSrvc.getSelectedActor()"></sc-options-actor>
+    </div>
+  </div>
+  <div class="scOptions_area" ng-if="navService.getNavSelectedId()=='tricks' && svgCircusSrvc.getSelectedTrick()!=null">
+    <div class="scOptions_head"></div>
+    <sc-options-title class="scOptions_title" model="svgCircusSrvc.getSelectedTrick().name"></sc-options-title>
+    <div class="scOptions_viewport" ng-scrollbar rebuild-on-change="svgCircusSrvc.getSelectedTrick()" rebuild-on-resize>
+      <sc-options-trick class="scOptions_content" model="svgCircusSrvc.getSelectedTrick()"></sc-options-trick>
+    </div>
+  </div>
+  <div class="scOptions_area" ng-if="navService.getNavSelectedId()=='scenario' && svgCircusSrvc.getSelectedScenarioItem()!=null">
+    <div class="scOptions_head"></div>
+    <sc-options-title class="scOptions_title" model="svgCircusSrvc.getSelectedScenarioItem().name"></sc-options-title>
+    <div class="scOptions_viewport" ng-scrollbar rebuild-on-change="svgCircusSrvc.getSelectedScenarioItem()" rebuild-on-resize>
+      <sc-options-scenario class="scOptions_content" model="svgCircusSrvc.getSelectedScenarioItem()"></sc-options-scenario>
+    </div>
+  </div>
+</div>

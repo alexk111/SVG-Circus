@@ -1,0 +1,360 @@
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+body {
+  font-family: $f-main;
+  color: $c-darkred;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+#svgCircus_loader, #svgCircus, #svgCircus_credits {
+  position: absolute;
+  top:0; bottom:0; height:100%;
+}
+
+input, button, textarea {
+  font-family: $f-main;
+  outline:none;
+}
+
+a {
+  color: $c-darkred;
+  text-decoration: none;
+  @include transition(color 0.2s ease-in-out);
+  &:hover {
+    color: $c-red;
+    text-decoration: none;
+  }
+}
+
+#svgCircus {
+  left:0;
+  right:240px;
+  > * {
+    display:block;
+    position:absolute;
+    top:0; bottom:0; height:100%;
+    @include transition(width 0.4s ease-in-out);
+  }
+}
+
+#svgCircus_areaNavOptions {
+  left:0; width:50%;
+  background: $c-grey3;
+  > * {
+    display:block;
+    position:absolute;
+    top:0; bottom:0; height:100%;
+    @include transition(width 0.4s ease-in-out);
+  }
+  > #svgCircus_areaNav {
+    background: $c-grey3;
+    left:0; width:40%;
+  }
+  > #svgCircus_areaOptions {
+    background: $c-grey1;
+    right:0; width:60%;
+  }
+}
+#svgCircus_areaArenaSVG {
+  background:$c-grey1;
+  right:0; width:50%;
+  > * {
+    position:absolute;
+    left:20px; right:20px;
+    overflow:hidden;
+  }
+}
+
+#svgCircus_areaArenaMenu {
+  top:40px;
+  height:80px;
+  text-align:left;
+  > * {
+    height:40px;
+    margin:20px 0 20px 20px;
+  }
+  > #svgCircus_areaPresetManager {
+    display:inline-block;
+    width:50%;
+    max-width:400px;
+    margin-left:0;
+  }
+  > button {
+    @extend %resetButton;
+    background: $c-blue;
+    color: $c-darkred;
+    height:40px;
+    line-height:40px;
+    margin:20px 0 20px 20px;
+    padding:0 20px;
+    font-size:12px;
+    font-weight:bold;
+    @include transition(all 0.2s ease-out);
+    &:hover {
+      background: $c-darkred;
+      color: $c-white;
+    }
+    &.inactive {
+      cursor:default;
+      background: $c-blue;
+      color: $c-darkred;
+      @include opacity(0.2);
+    }
+    &:last-child {
+      float:right;
+    }
+  }
+}
+
+#svgCircus_areaArena {
+  display:block;
+  top:120px;
+  bottom:200px;
+  border:10px solid $c-grey4;
+}
+
+#svgCircus_areaArenaSubMenu {
+  display:block;
+  height:200px;
+  bottom:0;
+}
+
+
+#svgCircus_credits {
+  background: $c-grey2;
+  right:0;
+  width:240px;
+}
+
+#svgCircus_logo {
+  margin:35px auto 0;
+  width:180px;
+  height:110px;
+  background: url(../imgs/logo.png) center no-repeat;
+  background-size:180px 110px;
+}
+
+#svgCircus_descr {
+  margin:30px auto 0;
+  width:210px;
+  font-size:12px;
+  line-height:17px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#svgCircus_share, #svgCircus_follow {
+  margin:30px auto 0;
+  width:210px;
+  font-size:12px;
+  line-height:17px;
+  font-weight:bold;
+  text-align: center;
+  > a {
+    display:inline-block;
+    text-transform:uppercase;
+    > svg {
+      display: inline-block;
+      margin-right:5px;
+    }
+    path {
+      @include transition(all 0.2s ease-in-out);
+      fill: $c-darkred;
+    }
+    &:hover {
+      path {
+        @include transition(all 0.2s ease-in-out);
+        fill: $c-red;
+      }
+    }
+    &.twitter {
+      > svg {
+        width:20px;
+        height:16px;
+        vertical-align:sub;
+      }
+    }
+  }
+}
+
+#svgCircus_madeby {
+  position:absolute;
+  bottom:40px;
+  left:20px; right:20px;
+  font-size:12px;
+  font-weight:bold;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+#svgCircus_loader, #svgCircus_smallScreen {
+  left:0;
+  width:100%;
+  background: $c-grey1;
+}
+
+#svgCircus_loader {
+  z-index:99999;
+  > div {
+    position: absolute;
+    width:100%;
+    left:0;
+    &:first-child {
+      top:70px;
+      height:70px;
+      text-align:center;
+      font-size:70px;
+      line-height:70px;
+      color:$c-red;
+    }
+    &:last-child {
+      top:150px;
+      bottom:0;
+    }
+  }
+  svg {
+    width:100%;
+    height:100%;
+    display:block;
+  }
+}
+
+#svgCircus_smallScreen {
+  z-index:100000;
+  display:none;
+  position:relative;
+  >div {
+    position:absolute;
+    left:10px; right:10px;
+  }
+  .svgCircus_smallScreen_pic {
+    top:15%;
+    height:30%;
+    background: url(../imgs/info_smallscreen.png) no-repeat;
+    background-position:50% 100%;
+    background-size: contain;
+  }
+  .svgCircus_smallScreen_text {
+    top:50%;
+    text-align:center;
+  }
+  .svgCircus_smallScreen_text1 {
+    font-size:30px;
+  }
+  .svgCircus_smallScreen_text2 {
+    margin-top:20px;
+    font-size:20px;
+    span {
+      color:$c-red;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1300px){
+#svgCircus {
+  right:140px;
+}
+
+#svgCircus_credits {
+  width:140px;
+}
+
+#svgCircus_logo {
+  margin:17px auto 0;
+  width:90px;
+  height:55px;
+  background-size:90px 55px;
+}
+
+#svgCircus_descr {
+  margin:15px auto 0;
+  width:120px;
+  font-size:10px;
+  line-height:14px;
+}
+
+#svgCircus_share, #svgCircus_follow {
+  margin:15px auto 0;
+  width:120px;
+  font-size:10px;
+  line-height:14px;
+  > a {
+    > svg {
+      margin-right:3px;
+    }
+    &.twitter {
+      > svg {
+        width:10px;
+        height:8px;
+        margin-bottom:3px;
+      }
+    }
+  }
+}
+
+#svgCircus_madeby {
+  bottom:20px;
+  left:10px; right:10px;
+  font-size:10px;
+}
+}
+
+@media screen and (max-width: 1020px), screen and (max-height: 500px){
+#svgCircus_smallScreen {
+  display:block;
+}
+}
+
+@media screen and (max-width: 500px), screen and (max-height: 500px){
+#svgCircus_smallScreen {
+  .svgCircus_smallScreen_text1 {
+    font-size:15px;
+  }
+  .svgCircus_smallScreen_text2 {
+    margin-top:10px;
+    font-size:10px;
+  }
+}
+}
+
+
+@media screen and (max-height: 800px){
+#svgCircus_areaArena {
+  bottom:100px;
+}
+
+#svgCircus_areaArenaSubMenu {
+  height:100px;
+}
+}
+
+@media screen and (max-height: 700px){
+#svgCircus_areaArena {
+  bottom:60px;
+}
+
+#svgCircus_areaArenaSubMenu {
+  height:60px;
+}
+}
+
+@media screen and (max-height: 600px){
+#svgCircus_areaArena {
+  bottom:20px;
+}
+
+#svgCircus_areaArenaSubMenu {
+  height:20px;
+}
+}

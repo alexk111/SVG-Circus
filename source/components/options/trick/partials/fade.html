@@ -1,0 +1,39 @@
+<div class="scOptions_group">
+  <div>Fading Sequence</div>
+  <select id="scOptionTrick_fade" ng-model="model.fade.fade">
+    <option value="in-out">Hidden - Visible - Hidden</option>
+    <option value="out-in">Visible - Hidden - Visible</option>
+  </select>
+</div>
+
+<div class="scOptions_group" ng-if="model.fade.fade=='in-out'">
+  <div>Visible Time Range</div>
+  <div class="inputRange">
+    <div class="inputRange_sliderArea">
+      <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model-low="model.fade.timing1" ng-model-high="model.fade.timing2"></slider>
+    </div>
+    <div class="inputRange_input1Area">
+      <input id="scOptionTrick_timing1" type="text" ng-model="model.fade.timing1" sanitize-input="float" />
+    </div>
+    <div class="inputRange_input2Area">
+      <input id="scOptionTrick_timing2" type="text" ng-model="model.fade.timing2" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group" ng-if="model.fade.fade=='out-in'">
+  <div>Invisible Time Range</div>
+  <div class="inputRange">
+    <div class="inputRange_sliderArea">
+      <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model-low="model.fade.timing1" ng-model-high="model.fade.timing2"></slider>
+    </div>
+    <div class="inputRange_input1Area">
+      <input id="scOptionTrick_timing1" type="text" ng-model="model.fade.timing1" sanitize-input="float" />
+    </div>
+    <div class="inputRange_input2Area">
+      <input id="scOptionTrick_timing2" type="text" ng-model="model.fade.timing2" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+<div ng-include="'options/trick/partials/common/easing.html'"></div>

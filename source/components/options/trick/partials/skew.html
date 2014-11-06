@@ -1,0 +1,65 @@
+<div class="scOptions_group">
+  <div>Skewing Sequence</div>
+  <select id="scOptionTrick_scale" ng-model="model.skew.skew">
+    <option value="to-back">Original - Skewed - Original</option>
+    <option value="from-back">Skewed - Original - Skewed</option>
+  </select>
+</div>
+
+
+<div class="scOptions_group">
+  <div>Skew X angle</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="-80" ceiling="80" step="1" precision="1" ng-model="model.skew.skewX"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionTrick_skewX" type="text" ng-model="model.skew.skewX" sanitize-input="integer" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group">
+  <div>Skew Y angle</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="-80" ceiling="80" step="1" precision="1" ng-model="model.skew.skewY"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionTrick_skewY" type="text" ng-model="model.skew.skewY" sanitize-input="integer" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group" ng-if="model.skew.skew=='to-back'">
+  <div>Skewed Time Range</div>
+  <div class="inputRange">
+    <div class="inputRange_sliderArea">
+      <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model-low="model.skew.timing1" ng-model-high="model.skew.timing2"></slider>
+    </div>
+    <div class="inputRange_input1Area">
+      <input id="scOptionTrick_timing1" type="text" ng-model="model.skew.timing1" sanitize-input="float" />
+    </div>
+    <div class="inputRange_input2Area">
+      <input id="scOptionTrick_timing2" type="text" ng-model="model.skew.timing2" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group" ng-if="model.skew.skew=='from-back'">
+  <div>Non-Skewed Time Range</div>
+  <div class="inputRange">
+    <div class="inputRange_sliderArea">
+      <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model-low="model.skew.timing1" ng-model-high="model.skew.timing2"></slider>
+    </div>
+    <div class="inputRange_input1Area">
+      <input id="scOptionTrick_timing1" type="text" ng-model="model.skew.timing1" sanitize-input="float" />
+    </div>
+    <div class="inputRange_input2Area">
+      <input id="scOptionTrick_timing2" type="text" ng-model="model.skew.timing2" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+
+<div ng-include="'options/trick/partials/common/easing.html'"></div>

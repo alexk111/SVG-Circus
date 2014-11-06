@@ -1,0 +1,101 @@
+<div id="scNav">
+  <div id="scNav_main">
+    <button ng-click="navService.setNavSelectedIdx($index)" ng-repeat="navItem in navService.getNavItems()" ng-class="{'active': navService.getNavSelectedIdx()==$index}">{{navItem.title}}</button>
+  </div>
+
+  <!-- ACTORS -->
+  <div class="scNav_area" ng-show="navService.getNavSelectedId()=='actors'">
+    <div class="scNav_title">
+      <div>Actors</div>
+      <button class="btnDuplicate" ng-click="svgCircusSrvc.duplicateActor(svgCircusSrvc.getSelectedActor())" ng-show="!!svgCircusSrvc.getSelectedActor()" tooltip="Duplicate Actor" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <rect x="6" y="1" width="12" height="14" />
+          <rect x="2" y="5" width="12" height="14" />
+        </svg>
+      </button>
+      <button class="btnAdd" ng-click="svgCircusSrvc.addActor()" tooltip="Add Actor" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <path d="M 8 0 L 8 8 L 0 8 L 0 12 L 8 12 L 8 20 L 12 20 L 12 12 L 20 12 L 20 8 L 12 8 L 12 0 L 8 0 Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="scNav_sub" ng-scrollbar rebuild-on-change="svgCircusSrvc.getActors()">
+      <div id="scNav_sub_actors" rebuild-on-resize data-sortable="$parent.dragActorListeners" data-ng-model="svgCircusSrvc.getActorList()._items">
+        <div class="scNav_subItem" ng-repeat="actor in svgCircusSrvc.getActors()" ng-class="{'active': actor==svgCircusSrvc.getSelectedActor()}" ng-click="svgCircusSrvc.setSelectedActor(actor)" data-sortable-item>
+          <div data-sortable-item-handle>
+          {{actor.name}}
+          <span ng-click="svgCircusSrvc.removeActor(actor); $event.stopPropagation();">
+            <svg viewBox="0 0 10 10">
+              <path d="M 5 6.4142 L 8.5355 9.9498 L 9.9498 8.5355 L 6.4142 5 L 9.9498 1.4645 L 8.5355 0.0502 L 5 3.5858 L 1.4645 0.0502 L 0.0502 1.4645 L 3.5858 5 L 0.0502 8.5355 L 1.4645 9.9498 L 5 6.4142 Z" />
+            </svg>
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRICKS -->
+  <div class="scNav_area" ng-show="navService.getNavSelectedId()=='tricks'">
+    <div class="scNav_title">
+      <div>Tricks</div>
+      <button class="btnDuplicate" ng-click="svgCircusSrvc.duplicateTrick(svgCircusSrvc.getSelectedTrick())" ng-show="!!svgCircusSrvc.getSelectedTrick()" tooltip="Duplicate Trick" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <rect x="6" y="1" width="12" height="14" />
+          <rect x="2" y="5" width="12" height="14" />
+        </svg>
+      </button>
+      <button class="btnAdd" ng-click="svgCircusSrvc.addTrick()" tooltip="Add Trick" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <path d="M 8 0 L 8 8 L 0 8 L 0 12 L 8 12 L 8 20 L 12 20 L 12 12 L 20 12 L 20 8 L 12 8 L 12 0 L 8 0 Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="scNav_sub" ng-scrollbar rebuild-on-change="svgCircusSrvc.getTricks()" rebuild-on-resize>
+      <div id="scNav_sub_tricks" rebuild-on-resize data-sortable="$parent.dragTrickListeners" data-ng-model="svgCircusSrvc.getTrickList()._items">
+        <div class="scNav_subItem" ng-repeat="trick in svgCircusSrvc.getTricks()" ng-class="{'active': trick==svgCircusSrvc.getSelectedTrick()}" ng-click="svgCircusSrvc.setSelectedTrick(trick)" data-sortable-item>
+          <div data-sortable-item-handle>
+            {{trick.name}}
+            <span ng-click="svgCircusSrvc.removeTrick(trick); $event.stopPropagation();">
+              <svg viewBox="0 0 10 10">
+                <path d="M 5 6.4142 L 8.5355 9.9498 L 9.9498 8.5355 L 6.4142 5 L 9.9498 1.4645 L 8.5355 0.0502 L 5 3.5858 L 1.4645 0.0502 L 0.0502 1.4645 L 3.5858 5 L 0.0502 8.5355 L 1.4645 9.9498 L 5 6.4142 Z" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO -->
+  <div class="scNav_area" ng-show="navService.getNavSelectedId()=='scenario'">
+    <div class="scNav_title">
+      <div>Scenario</div>
+      <button class="btnDuplicate" ng-click="svgCircusSrvc.duplicateScenarioItem(svgCircusSrvc.getSelectedScenarioItem())" ng-show="!!svgCircusSrvc.getSelectedScenarioItem()" tooltip="Duplicate Scenario Item" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <rect x="6" y="1" width="12" height="14" />
+          <rect x="2" y="5" width="12" height="14" />
+        </svg>
+      </button>
+      <button class="btnAdd" ng-click="svgCircusSrvc.addScenarioItem()" tooltip="Add Scenario Item" tooltip-append-to-body="true" tooltip-popup-delay="300">
+        <svg viewBox="0 0 20 20">
+          <path d="M 8 0 L 8 8 L 0 8 L 0 12 L 8 12 L 8 20 L 12 20 L 12 12 L 20 12 L 20 8 L 12 8 L 12 0 L 8 0 Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="scNav_sub" ng-scrollbar rebuild-on-change="svgCircusSrvc.getScenarioItems()" rebuild-on-resize>
+      <div id="scNav_sub_scenarios" rebuild-on-resize data-sortable="$parent.dragScenarioListeners" data-ng-model="svgCircusSrvc.getScenarioList()._items">
+        <div class="scNav_subItem" ng-repeat="scenarioItem in svgCircusSrvc.getScenarioItems()" ng-class="{'active': scenarioItem==svgCircusSrvc.getSelectedScenarioItem()}" ng-click="svgCircusSrvc.setSelectedScenarioItem(scenarioItem)" data-sortable-item>
+          <div data-sortable-item-handle>
+            {{scenarioItem.name}}
+            <span ng-click="svgCircusSrvc.removeScenarioItem(scenarioItem); $event.stopPropagation();">
+              <svg viewBox="0 0 10 10">
+                <path d="M 5 6.4142 L 8.5355 9.9498 L 9.9498 8.5355 L 6.4142 5 L 9.9498 1.4645 L 8.5355 0.0502 L 5 3.5858 L 1.4645 0.0502 L 0.0502 1.4645 L 3.5858 5 L 0.0502 8.5355 L 1.4645 9.9498 L 5 6.4142 Z" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

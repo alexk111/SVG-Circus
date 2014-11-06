@@ -1,0 +1,275 @@
+#scNav {
+  position:relative;
+  height:100%;
+  width:100%;
+  //@include perspective(2000);
+  overflow:hidden;
+  > * {
+    position:absolute;
+    overflow:hidden;
+    left:0; right:0;
+    @include box-sizing(border-box);
+  }
+}
+
+#scNav_main {
+  height:40px;
+  top:0;
+  > button {
+    @extend %resetButton;
+    display:inline-block;
+    width:33.3333%;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    overflow:hidden;
+    font-size:14px;
+    font-weight:bold;
+    background:$c-grey3;
+    @include transition(all 0.2s ease-out);
+    &:hover,&.active {
+      background:$c-red;
+      color:$c-white;
+    }
+  }
+}
+
+.scNav_area {
+  top:40px; bottom:0;
+  > * {
+    position:absolute;
+    overflow:hidden;
+    left:0; right:0;
+    @include box-sizing(border-box);
+  }
+  @include opacity(1);
+  @include transition(opacity 0.35s ease-in-out);
+  /*
+  @include rotateY(0);
+  &.ng-hide-add,
+  &.ng-hide-remove {
+    display:block!important;
+  }
+  &.ng-hide-add {
+    @include apply-origin(100% 0, false);
+    @include transition(all 0.35s ease-in-out);
+  }
+  &.ng-hide-remove {
+    @include apply-origin(100% 0, false);
+    @include transition(all 0.35s ease-in-out 0.2s);
+  }
+
+  &.ng-hide-add.ng-hide-add-active {
+    @include rotateY(-120deg);
+  }
+  &.ng-hide-remove {
+    @include rotateY(-120deg);
+  }
+  &.ng-hide-remove.ng-hide-remove-active {
+    @include rotateY(0);
+  }
+  */
+
+  &.ng-hide {
+    @include opacity(0);
+  }
+}
+.scNav_title {
+  height:80px;
+  top:0;
+  background:$c-grey2;
+  > div:first-child {
+    position:absolute;
+    top:0; height:100%;
+    left:15px;
+    right:100px;
+    line-height:80px;
+    font-size:26px;
+    color:$c-darkgrey;
+    font-weight:600;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  > button {
+    position:absolute;
+    @extend %resetButton;
+    display:block;
+    top:20px; height:40px;
+    width:40px;
+    @include opacity(1);
+    @include transition(all 0.2s ease-out);
+    > svg {
+      display:block;
+      position:absolute;
+      width:20px; height:20px;
+      top:10px; left:10px;
+      > path {
+        fill: $c-darkred;
+      }
+      > rect {
+        @include transition(fill 0.2s ease-out);
+        fill: $c-grey2;
+        stroke-width:2px;
+        stroke: $c-darkred;
+      }
+    }
+    &.btnDuplicate {
+      right:50px;
+    }
+    &.btnAdd {
+      right:10px;
+    }
+    &:hover {
+      background:$c-grey3;
+      > svg {
+        > rect {
+          fill: $c-grey3;
+        }
+      }
+    }
+
+    &.ng-hide-add,
+    &.ng-hide-remove {
+      display:block!important;
+    }
+
+    &.ng-hide {
+      @include opacity(0);
+    }
+
+  }
+}
+
+.scNav_sub {
+  top:80px;
+  bottom:0;
+  overflow:hidden;
+}
+
+
+.scNav_subItem {
+  @extend %resetButton;
+  position:relative;
+  display:block;
+  text-align:left;
+  width:100%;
+  height:50px;
+  line-height:50px;
+  overflow:hidden;
+  background:$c-grey3;
+  padding-left:15px;
+  padding-right:60px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  @include transition(all 0.2s ease-out);
+  span {
+    position: absolute;
+    top:15px;
+    right:20px;
+    @include opacity(0);
+    display:inline-block;
+    width:20px;
+    height:20px;
+    @include transition(all 0.2s ease-out);
+    svg {
+      display:block;
+      width:10px; height:10px;
+      margin:5px;
+    }
+    path {
+      fill:$c-grey3;
+    }
+    &:hover {
+      background: $c-darkred;
+    }
+  }
+  &:hover,&.active {
+    background:$c-red;
+    color:$c-white;
+  }
+  &:hover {
+    span {
+      @include opacity(1);
+    }
+  }
+
+  &.ng-move,
+  &.ng-enter {
+    @include transition(all 0.2s ease-in-out);
+    overflow:hidden;
+    display: block !important;
+    line-height:0;
+    height:0;
+    z-index:1;
+  }
+  &.ng-leave {
+    @include transition(all 0.2s ease-in-out);
+    overflow:hidden;
+    display: block !important;
+    line-height:50px;
+    height:50px;
+  }
+  &.ng-move.ng-move-active,
+  &.ng-enter.ng-enter-active {
+    line-height:50px;
+    height:50px;
+  }
+
+  &.ng-leave.ng-leave-active {
+    line-height:0;
+    height:0;
+  }
+
+}
+
+.sortable-drag .scNav_subItem {
+  background: $c-grey2;
+  &.active {
+    background:$c-red;
+    color:$c-white;
+  }
+}
+.sortable-placeholder {
+  background: $c-grey1;
+  border:1px dashed $c-darkgrey;
+}
+
+// Smaller screens
+
+@media screen and (max-width: 1400px){
+#scNav_main {
+  > button {
+    font-size:12px;
+  }
+}
+
+.scNav_title {
+  > div:first-child {
+    font-size:22px;
+  }
+}
+
+.scNav_subItem {
+  font-size:12px;
+}
+
+}
+
+@media screen and (max-width: 1150px){
+#scNav_main {
+  > button {
+    font-size:10px;
+  }
+}
+
+.scNav_title {
+  > div:first-child {
+    font-size:18px;
+  }
+}
+
+.scNav_subItem {
+  font-size:10px;
+}
+
+}

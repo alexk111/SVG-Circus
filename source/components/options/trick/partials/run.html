@@ -1,0 +1,158 @@
+<div class="scOptions_group">
+  <div>Path</div>
+  <select id="scOptionTrick_path" ng-model="model.run.path">
+    <option value="rect">Rectangle</option>
+    <option value="circle">Circle</option>
+    <option value="line">Line</option>
+  </select>
+</div>
+
+<div class="scOptions_group" ng-if="model.run.path=='rect' || model.run.path=='circle'">
+  <div>Direction</div>
+  <select id="scOptionTrick_direction" ng-model="model.run.direction">
+    <option value="1">Clockwise</option>
+    <option value="-1">Counterclockwise</option>
+  </select>
+</div>
+
+<div class="scOptions_group">
+  <div>Loops</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="1" ceiling="20" step="1" precision="0" ng-model="model.run.loops"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionTrick_loops" type="text" ng-model="model.run.loops" sanitize-input="integer" />
+    </div>
+  </div>
+</div>
+
+<div ng-if="model.run.path=='rect'">
+  <div class="scOptions_group">
+    <div>Rectangle Path</div>
+    <label for="scOptionTrick_rectX">Horizontal Move:</label>
+    <div class="inputNumber">
+      <div class="inputNumber_sliderArea">
+        <slider floor="1" ceiling="100" step="1" precision="0" ng-model="model.run.rect.rectX"></slider>
+      </div>
+      <div class="inputNumber_inputArea">
+        <input id="scOptionTrick_rectX" type="text" ng-model="model.run.rect.rectX" sanitize-input="integer" />
+      </div>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.rect.rectX=100*0.25">25%</button>
+      <button ng-click="model.run.rect.rectX=100*0.5">50%</button>
+      <button ng-click="model.run.rect.rectX=100*0.75">75%</button>
+    </div>
+
+    <label for="scOptionTrick_rectY">Vertical Move:</label>
+    <div class="inputNumber">
+      <div class="inputNumber_sliderArea">
+        <slider floor="1" ceiling="100" step="1" precision="0" ng-model="model.run.rect.rectY"></slider>
+      </div>
+      <div class="inputNumber_inputArea">
+        <input id="scOptionTrick_rectY" type="text" ng-model="model.run.rect.rectY" sanitize-input="integer" />
+      </div>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.rect.rectY=100*0.25">25%</button>
+      <button ng-click="model.run.rect.rectY=100*0.5">50%</button>
+      <button ng-click="model.run.rect.rectY=100*0.75">75%</button>
+    </div>
+  </div>
+
+  <div class="scOptions_group">
+    <div>Start Point</div>
+    <select id="scOptionTrick_startPoint" ng-model="model.run.rect.startPoint">
+      <option value="top">Top</option>
+      <option value="right">Right</option>
+      <option value="bottom">Bottom</option>
+      <option value="left">Left</option>
+    </select>
+  </div>
+
+  <div ng-include="'options/trick/partials/common/easing.html'"></div>
+</div>
+
+<div ng-if="model.run.path=='circle'">
+  <div class="scOptions_group">
+    <div>Start Point</div>
+    <select id="scOptionTrick_startPoint" ng-model="model.run.circle.startAngle">
+      <option value="180">Left</option>
+      <option value="90">Top</option>
+      <option value="0">Right</option>
+      <option value="-90">Bottom</option>
+    </select>
+  </div>
+
+  <div class="scOptions_group">
+    <div>Circle Path</div>
+    <label for="scOptionTrick_diameter">Diameter:</label>
+    <div class="inputNumber">
+      <div class="inputNumber_sliderArea">
+        <slider floor="1" ceiling="100" step="1" precision="0" ng-model="model.run.circle.diameter"></slider>
+      </div>
+      <div class="inputNumber_inputArea">
+        <input id="scOptionTrick_diameter" type="text" ng-model="model.run.circle.diameter" sanitize-input="integer" />
+      </div>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.circle.diameter=100*0.25">25%</button>
+      <button ng-click="model.run.circle.diameter=100*0.5">50%</button>
+      <button ng-hide="true"></button>
+    </div>
+  </div>
+
+  <div ng-include="'options/trick/partials/common/easing.html'"></div>
+</div>
+
+<div ng-if="model.run.path=='line'">
+  <div class="scOptions_group">
+    <div>Start Point</div>
+    <select id="scOptionTrick_startPoint" ng-model="model.run.line.startPoint">
+      <option value="start">Start</option>
+      <option value="middle">Middle</option>
+    </select>
+  </div>
+
+  <div class="scOptions_group">
+    <div>Direction (angle)</div>
+    <div class="inputNumber">
+      <div class="inputNumber_sliderArea">
+        <slider floor="0" ceiling="360" step="1" precision="0" ng-model="model.run.line.angle"></slider>
+      </div>
+      <div class="inputNumber_inputArea">
+        <input id="scOptionTrick_angle" type="text" ng-model="model.run.line.angle" sanitize-input="integer" />
+      </div>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.line.angle=135">NW</button>
+      <button ng-click="model.run.line.angle=90">N</button>
+      <button ng-click="model.run.line.angle=45">NE</button>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.line.angle=225">SW</button>
+      <button ng-click="model.run.line.angle=270">S</button>
+      <button ng-click="model.run.line.angle=315">SE</button>
+    </div>
+  </div>
+
+  <div class="scOptions_group">
+    <div>Distance</div>
+    <div class="inputNumber">
+      <div class="inputNumber_sliderArea">
+        <slider floor="1" ceiling="100" step="1" precision="0" ng-model="model.run.line.distance"></slider>
+      </div>
+      <div class="inputNumber_inputArea">
+        <input id="scOptionTrick_distance" type="text" ng-model="model.run.line.distance" sanitize-input="integer" />
+      </div>
+    </div>
+    <div class="helperButtons helperButtons3">
+      <button ng-click="model.run.line.distance=100*0.25">25%</button>
+      <button ng-click="model.run.line.distance=100*0.5">50%</button>
+      <button ng-hide="true"></button>
+    </div>
+  </div>
+
+  <div ng-include="'options/trick/partials/common/easing.html'"></div>
+</div>

@@ -1,0 +1,106 @@
+<div class="scOptions_group">
+  <div>Start After (seconds)</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="30" step="0.1" precision="1" ng-model="model.startAfter"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionScenario_startAfter" type="text" ng-model="model.startAfter" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+<div class="scOptions_group">
+  <div>Duration (seconds)</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0.1" ceiling="20" step="0.1" precision="1" ng-model="model.duration"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionScenario_duration" type="text" ng-model="model.duration" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group">
+  <div>Tricks</div>
+  <div class="subgroup" ng-repeat="trickItem in model.tricks.getItems()">
+    <select ng-model="trickItem.trick" ng-change="trickChange(trickItem, $index)" ng-options="trickOption.name for trickOption in svgCircusSrvc.getTricks()">
+      <option value="">Remove Trick</option>
+    </select>
+    <div class="inputRange noLabel">
+      <div class="inputRange_sliderArea">
+        <slider floor="0" ceiling="1" step="0.01" precision="2" ng-model-low="trickItem.start" ng-model-high="trickItem.end"></slider>
+      </div>
+      <div class="inputRange_input1Area">
+        <input type="text" ng-model="trickItem.start" sanitize-input="float" />
+      </div>
+      <div class="inputRange_input2Area">
+        <input type="text" ng-model="trickItem.end" sanitize-input="float" />
+      </div>
+    </div>
+  </div>
+  <select ng-model="addTrick" ng-options="trickOption.name for trickOption in svgCircusSrvc.getTricks()">
+    <option value="">Add Trick</option>
+  </select>
+</div>
+
+<div class="scOptions_group">
+  <div>Actors</div>
+  <select ng-repeat="actorItem in model.actors.getItems()" ng-model="actorItem.actor" ng-change="actorChange(actorItem, $index)" ng-options="actorOption.name for actorOption in svgCircusSrvc.getActors()">
+    <option value="">Remove Actor</option>
+  </select>
+  <select ng-model="addActor" ng-options="actorOption.name for actorOption in svgCircusSrvc.getActors()">
+    <option value="">Add Actor</option>
+  </select>
+</div>
+
+<div class="scOptions_group">
+  <div>Actor Delay (seconds)</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="2" step="0.01" precision="2" ng-model="model.actorDelay"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionScenario_actorDelay" type="text" ng-model="model.actorDelay" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+
+<div class="scOptions_group">
+  <div>Repeats</div>
+  <select id="scOptionScenario_repeat" ng-model="model.repeat">
+    <option value="0">Unlimited</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+  </select>
+</div>
+<div class="scOptions_group">
+  <div>Repeat Delay (seconds)</div>
+  <div class="inputNumber">
+    <div class="inputNumber_sliderArea">
+      <slider floor="0" ceiling="10" step="0.1" precision="1" ng-model="model.repeatDelay"></slider>
+    </div>
+    <div class="inputNumber_inputArea">
+      <input id="scOptionScenario_repeatDelay" type="text" ng-model="model.repeatDelay" sanitize-input="float" />
+    </div>
+  </div>
+</div>
+

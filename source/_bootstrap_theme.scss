@@ -1,0 +1,38 @@
+/* TOOLTIP */
+
+.tooltip.top {
+  .tooltip-arrow {
+    border-top-color: $c-darkred;
+  }
+  &.in {
+    @include opacity(1);
+  }
+}
+
+.tooltip-inner {
+  background-color: $c-darkred;
+  color: $c-grey1;
+}
+
+/* MODAL */
+
+.modal-content {
+  @include border-radius(0);
+  background: $c-grey1;
+}
+
+.modal-dialog {
+  .btn {
+    @extend %resetButton;
+    padding:10px 15px;
+    @include transition(all 0.2s ease-in-out);
+    &.btn-success {
+      background: $c-blue;
+      color: $c-darkred;
+      &:hover {
+        background: $c-darkred;
+        color: $c-white;
+      }
+    }
+  }
+}
