@@ -153,7 +153,7 @@ a {
   text-align:center;
 }
 
-#svgCircus_share, #svgCircus_follow {
+.svgCircus_link {
   margin:30px auto 0;
   width:210px;
   font-size:12px;
@@ -175,6 +175,13 @@ a {
       path {
         @include transition(all 0.2s ease-in-out);
         fill: $c-red;
+      }
+    }
+    &.github {
+      > svg {
+        width:20px;
+        height:20px;
+        vertical-align:bottom;
       }
     }
     &.twitter {
